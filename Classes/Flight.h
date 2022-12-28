@@ -5,11 +5,12 @@
 #include "Airport.h"
 #include "Airline.h"
 
+class Airport;
+
 class Flight {
 public:
-    Flight(Airport* source, Airport* dest, Airline* airline);
+    Flight(Airport* dest, Airline* airline);
 private:
-    Airport* source;
     Airport* dest;
     Airline* airline;
 };

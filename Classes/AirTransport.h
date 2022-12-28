@@ -3,6 +3,7 @@
 
 
 #include <unordered_map>
+#include <unordered_set>
 #include <set>
 #include "Airport.h"
 #include "City.h"
@@ -11,10 +12,11 @@
 class AirTransport {
 public:
     AirTransport();
+    //~AirTransport();
 private:
-    unordered_map<int, Airport> airports;
-    unordered_map<int, City> cities;
-    set<Airline> airlines;
+    unordered_map<int, Airport*> airports;
+    unordered_map<size_t, City*> cities;
+    unordered_map<int, Airline*> airlines;
 };
 
 

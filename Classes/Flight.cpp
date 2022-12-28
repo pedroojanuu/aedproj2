@@ -1,5 +1,6 @@
-//
-// Created by Pedro on 19/12/2022.
-//
-
 #include "Flight.h"
+
+Flight::Flight(Airport *dest, Airline *airline) {
+    this->dest = dest;
+    this->airline = airline;
+}

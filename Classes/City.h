@@ -7,11 +7,18 @@
 
 using namespace std;
 
+class Airport;
+
 class City {
 public:
-    City(string name);
+    City(const string& name, const string& country);
+    static size_t hash(string name, const string& country);
+    void addAirport(Airport* airport);
+    void print() const;
 private:
     string name;
+    string country;
+    vector<Airport*> airports;
 };
 
 

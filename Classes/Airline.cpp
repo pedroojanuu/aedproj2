@@ -1,12 +1,22 @@
+#include <valarray>
+#include <iostream>
 #include "Airline.h"
 
-Airline::Airline(string code, string name, string callsign, string country) {
-    code = code;
-    name = name;
-    callsign = callsign;
-    country = country;
+Airline::Airline(const string& code, const string& name, const string& callsign, const string& country) {
+    this->code = code;
+    this->name = name;
+    this->callsign = callsign;
+    this->country = country;
 }
 
-bool Airline::operator<(const Airline &b) const {
-    return code < b.code;
+int Airline::hash(const string& code) {
+    int hashCode = 0;
+    for (int i = 0; i < code.length(); i++) {
+        hashCode += code[i] * pow(31, i);
+    }
+    return hashCode;
+}
+
+void Airline::print() const {
+    cout << code << ',' << name << endl;
 }

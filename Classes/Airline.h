@@ -8,8 +8,9 @@ using namespace std;
 
 class Airline {
 public:
-    Airline(string code, string name, string callsign, string country);
-    bool operator<(const Airline& b) const;
+    Airline(const string& code, const string& name, const string& callsign, const string& country);
+    static int hash(const string& code);
+    void print() const;
 private:
     string code;
     string name;

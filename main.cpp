@@ -1,8 +1,9 @@
 #include <iostream>
 #include <unordered_map>
-#include "Classes/City.h"
+#include "Classes/AirTransport.h"
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
-    return 0;
+    AirTransport airTransport;
+
 }

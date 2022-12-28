@@ -2,12 +2,11 @@
 #include <iostream>
 #include "Airport.h"
 
-Airport::Airport(const string &code, const string &name, const string &city, const string &country, double lat,
+Airport::Airport(const string &code, const string &name, City* city, double lat,
                  double lon) {
     this->code = code;
     this->name = name;
     this->city = city;
-    this->country = country;
     this->lat = lat;
     this->lon = lon;
 }
@@ -21,7 +20,8 @@ int Airport::hash(const string &code) {
 }
 
 void Airport::print() const {
-    cout << code << ',' << name << ',' << city << endl;
+    cout << code << ',' << name << ',';
+    city->print();
 }
 
 void Airport::addFlight(const Flight &flight) {

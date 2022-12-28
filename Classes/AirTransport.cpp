@@ -42,7 +42,7 @@ AirTransport::AirTransport() {
             cities.insert({City::hash(city, country), newCity});
         }
 
-        Airport* airport = new Airport(code, name, city, country, stod(lat), stod(lon));
+        Airport* airport = new Airport(code, name, cities[City::hash(city, country)], stod(lat), stod(lon));
         airports.insert({Airport::hash(code), airport});
 
         cities[City::hash(city, country)]->addAirport(airport);
@@ -107,4 +107,24 @@ list<Airport*> AirTransport::shortestPath(Airport *source, Airport *dest) {
 Airport* AirTransport::getAirport(const string &code) {
     if (airports.find(Airport::hash(code)) == airports.end()) return nullptr;
     return airports[Airport::hash(code)];
+}
+
+City* AirTransport::getCity(const string& name, const string& country) {
+    if (cities.find(City::hash(name, country)) == cities.end()) return nullptr;
+    return cities[City::hash(name, country)];
+}
+
+list<list<Airport*>> AirTransport::flightsByCity(City* source, City* dest) {
+    list<list<Airport*>> ret;
+    for (Airport* src : source->getAirports()) {
+        for (Airport * dst : dest->getAirports()) {
+            list<Airport*> path = shortestPath(src, dst);
+            if (ret.empty() || ret.back().size() == path.size()) ret.push_back(path);
+            else if (ret.back().size() > path.size()) {
+                ret.pop_back();
+                ret.push_back(path);
+            }
+        }
+    }
+    return ret;
 }

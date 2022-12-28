@@ -18,6 +18,10 @@ void City::addAirport(Airport *airport) {
     airports.push_back(airport);
 }
 
+vector<Airport*> City::getAirports() const {
+    return airports;
+}
+
 void City::print() const {
     cout << name << ',' << country << endl;
 }

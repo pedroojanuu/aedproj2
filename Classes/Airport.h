@@ -9,10 +9,11 @@
 using namespace std;
 
 class Flight;
+class City;
 
 class Airport {
 public:
-    Airport(const string& code, const string& name, const string& city, const string& country, double lat, double lon);
+    Airport(const string& code, const string& name, City* city, double lat, double lon);
     static int hash(const string& code);
     void print() const;
     void addFlight(const Flight& flight);
@@ -26,8 +27,7 @@ public:
 private:
     string code;
     string name;
-    string city;
-    string country;
+    City* city;
     double lat;
     double lon;
     vector<Flight> flights;

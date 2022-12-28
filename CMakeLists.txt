@@ -25,4 +25,4 @@ else(DOXYGEN_FOUND)
     message("Doxygen needs to be installed to generate the documentation.")
 endif(DOXYGEN_FOUND)
 
-add_executable(AED_Proj2 main.cpp)
+add_executable(AED_Proj2 main.cpp Classes/Airport.cpp Classes/Airport.h Classes/Airline.cpp Classes/Airline.h Classes/Flight.cpp Classes/Flight.h Classes/City.cpp Classes/City.h Classes/AirTransport.cpp Classes/AirTransport.h)

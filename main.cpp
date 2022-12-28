@@ -3,7 +3,9 @@
 #include "Classes/AirTransport.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
     AirTransport airTransport;
 
+    list <Airport*> l = airTransport.shortestPath(airTransport.getAirport("OPO"), airTransport.getAirport(""));
+
+    for (auto it = l.begin(); it != l.end(); it++) (*it)->print();
 }

@@ -10,6 +10,7 @@ class Airport;
 class Flight {
 public:
     Flight(Airport* dest, Airline* airline);
+    Airport* getDest() const;
 private:
     Airport* dest;
     Airline* airline;

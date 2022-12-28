@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -66,4 +67,44 @@ AirTransport::AirTransport() {
     //for (const pair<const int, Airport*>& airport : airports) airport.second->print();
     //for (const pair<const size_t, City*>& city : cities) city.second->print();
     //for (const pair<const int, Airline*>& airline : airlines) airline.second->print();
+}
+
+void AirTransport::bfs(Airport* source) {
+    for (const pair<int, Airport*>& airport : airports) airport.second->setVisited(false);
+    queue<Airport*> q;
+    q.push(source);
+    source->setVisited(true);
+    source->setDistance(0);
+    while (!q.empty()) {
+        Airport* u = q.front(); q.pop();
+        //u->print();
+        for (const Flight& flight : u->getFlights()) {
+            Airport* dest = flight.getDest();
+            if (!dest->isVisited()) {
+                q.push(dest);
+                dest->setVisited(true);
+                dest->setDistance(u->getDistance() + 1);
+                dest->setLast(u);
+            }
+        }
+    }
+}
+
+list<Airport*> AirTransport::shortestPath(Airport *source, Airport *dest) {
+    list<Airport*> ret;
+    if (source == nullptr || dest == nullptr) return ret;
+
+    bfs(source);
+
+    while (dest != source) {
+        ret.push_front(dest);
+        dest = dest->getLast();
+    }
+    ret.push_front(source);
+    return ret;
+}
+
+Airport* AirTransport::getAirport(const string &code) {
+    if (airports.find(Airport::hash(code)) == airports.end()) return nullptr;
+    return airports[Airport::hash(code)];
 }

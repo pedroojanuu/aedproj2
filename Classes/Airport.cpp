@@ -27,3 +27,31 @@ void Airport::print() const {
 void Airport::addFlight(const Flight &flight) {
     flights.push_back(flight);
 }
+
+bool Airport::isVisited() const {
+    return visited;
+}
+
+void Airport::setVisited(bool b) {
+    visited = b;
+}
+
+int Airport::getDistance() const {
+    return distance;
+}
+
+void Airport::setDistance(int d) {
+    distance = d;
+}
+
+Airport* Airport::getLast() const {
+    return lastAirport;
+}
+
+void Airport::setLast(Airport *l) {
+    lastAirport = l;
+}
+
+vector<Flight> Airport::getFlights() const {
+    return flights;
+}

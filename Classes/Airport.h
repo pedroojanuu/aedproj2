@@ -16,6 +16,13 @@ public:
     static int hash(const string& code);
     void print() const;
     void addFlight(const Flight& flight);
+    bool isVisited() const;
+    void setVisited(bool b);
+    int getDistance() const;
+    void setDistance(int d);
+    Airport* getLast() const;
+    void setLast(Airport* l);
+    vector<Flight> getFlights() const;
 private:
     string code;
     string name;
@@ -24,6 +31,9 @@ private:
     double lat;
     double lon;
     vector<Flight> flights;
+    bool visited;
+    int distance;
+    Airport* lastAirport;
 };
 
 

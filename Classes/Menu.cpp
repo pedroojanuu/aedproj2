@@ -42,7 +42,7 @@ void Menu::mainMenu() {
             pathMenu(airTransport);
             break;
         case 2:
-            //infoMenu();
+            infoMenu(airTransport);
             break;
         case 3:
             cout << "Adeus!\n";
@@ -228,10 +228,31 @@ void Menu::pathMenu(AirTransport& airTransport) {
 
     auto paths = airTransport.getPaths(source,dest,desiredAirlines);
     for(const auto& path : paths) {
-        for(auto airport : path) {
-            airport->print();
-        }
+        for(auto airport : path) airport->print();
         cout << endl;
         cout << "Numero de voos: " << path.size()-1 << endl;
     }
+}
+
+void Menu::infoMenu(AirTransport& airTransport) {
+    cout << "Insira o codigo do aeroporto:\n";
+    string code;
+    while(true) {
+        cin >> code;
+        cout << endl;
+        if(code.length() == 3 && airTransport.getAirport(code).size() == 1) break;
+        cout << "Codigo invalido ou aeroporto inexistente.\n" <<
+             "Por favor, tente novamente.\n";
+    }
+    airTransport.flightsByAirport(airTransport.getAirport(code));
+
+    cout << "\nInsira um numero maximo de voos:\n";
+    string num;
+    while (true) {
+        cin >> num;
+        cout << endl;
+        if (is_float(num) && stoi(num) >= 1) break;
+        cout << "Numero invalido.\nPor favor tente novamente." << endl;
+    }
+    airTransport.flightsInRange(airTransport.getAirport(code), stoi(num));
 }

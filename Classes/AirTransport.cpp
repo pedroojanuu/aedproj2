@@ -252,6 +252,6 @@ void AirTransport::flightsInRange(const vector<Airport*>& airport, int maxflight
             cities.insert(p.second->getCity());
             countries.insert(p.second->getCity()->getCountry());
         }
-    cout << "\nExistem " << counter << " aeroportos, em " << cities.size() << " cidades, de " << countries.size() <<
-    " paises atingiveis com um maximo de " << maxflights << " voo(s).\n";
+    cout << "Existem " << counter << " aeroportos, em " << cities.size() << " cidades, de " << countries.size() <<
+    " paises, atingiveis com um maximo de " << maxflights << " voo(s) a partir deste aeroporto.\n";
 }

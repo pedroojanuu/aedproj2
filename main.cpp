@@ -62,8 +62,5 @@ int main() {
 */
     Menu::mainMenu();
 
-    /*AirTransport airTransport;
-    airTransport.getAirline("RYR")->print();*/
-
     return 0;
 }

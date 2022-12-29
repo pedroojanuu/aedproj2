@@ -61,5 +61,9 @@ int main() {
     airTransport.flightsInRange(airTransport.getAirport("LIS"), 1);
 */
     Menu::mainMenu();
+
+    /*AirTransport airTransport;
+    airTransport.getAirline("RYR")->print();*/
+
     return 0;
 }

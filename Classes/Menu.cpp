@@ -1,4 +1,3 @@
-
 #include "Menu.h"
 #include "AirTransport.h"
 #include <iostream>
@@ -222,13 +221,13 @@ void Menu::pathMenu(AirTransport& airTransport) {
             cin >> airline;
             cout << endl;
             if(airline == "0") break;
-            if(airTransport.getAirline(code) != nullptr) desiredAirlines.push_back(airTransport.getAirline(code));
+            if(airTransport.getAirline(airline) != nullptr) desiredAirlines.push_back(airTransport.getAirline(airline));
             else cout << "Codigo de companhia invalido\n";
         }
     }
 
     auto paths = airTransport.getPaths(source,dest,desiredAirlines);
-    for(auto path : paths) {
+    for(const auto& path : paths) {
         for(auto airport : path) {
             airport->print();
         }

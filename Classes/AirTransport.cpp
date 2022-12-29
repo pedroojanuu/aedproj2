@@ -4,6 +4,7 @@
 #include <sstream>
 #include <iostream>
 #include <queue>
+#include <cmath>
 
 using namespace std;
 
@@ -104,9 +105,11 @@ list<Airport*> AirTransport::shortestPath(Airport *source, Airport *dest) {
     return ret;
 }
 
-Airport* AirTransport::getAirport(const string &code) {
-    if (airports.find(Airport::hash(code)) == airports.end()) return nullptr;
-    return airports[Airport::hash(code)];
+vector<Airport*> AirTransport::getAirport(const string &code) {
+    vector<Airport*> ret;
+    if (airports.find(Airport::hash(code)) == airports.end()) return ret;
+    ret.push_back(airports[Airport::hash(code)]);
+    return ret;
 }
 
 City* AirTransport::getCity(const string& name, const string& country) {
@@ -114,10 +117,14 @@ City* AirTransport::getCity(const string& name, const string& country) {
     return cities[City::hash(name, country)];
 }
 
-list<list<Airport*>> AirTransport::flightsByCity(City* source, City* dest) {
+vector<Airport*> AirTransport::getAirportsInCity(City* city) {
+    return city->getAirports();
+}
+
+list<list<Airport*>> AirTransport::getPaths(const vector<Airport*>& source, const vector<Airport*>& dest) {
     list<list<Airport*>> ret;
-    for (Airport* src : source->getAirports()) {
-        for (Airport * dst : dest->getAirports()) {
+    for (Airport* src : source) {
+        for (Airport * dst : dest) {
             list<Airport*> path = shortestPath(src, dst);
             if (ret.empty() || ret.back().size() == path.size()) ret.push_back(path);
             else if (ret.back().size() > path.size()) {
@@ -126,5 +133,26 @@ list<list<Airport*>> AirTransport::flightsByCity(City* source, City* dest) {
             }
         }
     }
+    return ret;
+}
+
+double AirTransport::haversine(double lat1, double lon1, double lat2, double lon2) {
+    double dLat = (lat2 - lat1) * M_PI / 180.0;
+    double dLon = (lon2 - lon1) * M_PI / 180.0;
+
+    lat1 = (lat1) * M_PI / 180.0;
+    lat2 = (lat2) * M_PI / 180.0;
+
+    double a = pow(sin(dLat / 2), 2) + pow(sin(dLon / 2), 2) * cos(lat1) * cos(lat2);
+    double rad = 6371;
+    double c = 2 * asin(sqrt(a));
+    return rad * c;
+}
+
+vector<Airport*> AirTransport::getAirportsInRange(double lat, double lon, int dist) {
+    vector<Airport*> ret;
+    for (pair<const int, Airport *> p : airports)
+        if (haversine(p.second->getLat(), p.second->getLon(), lat, lon) <= dist)
+            ret.push_back(p.second);
     return ret;
 }

@@ -15,9 +15,13 @@ public:
     //~AirTransport();
     void bfs(Airport* source);
     list<Airport*> shortestPath (Airport* source, Airport* dest);
-    Airport* getAirport(const string& code);
+    vector<Airport*> getAirport(const string& code);
     City* getCity(const string &name, const string &country);
-    list<list<Airport*>> flightsByCity(City* source, City* dest);
+    list<list<Airport*>> getPaths(const vector<Airport*>& source, const vector<Airport*>& dest);
+    vector<Airport*> getAirportsInRange(double lat, double lon, int dist);
+    static double haversine(double lat1, double lon1, double lat2, double lon2);
+    list<list<Airport*>> flightsBySpot(double lat1, double lon1, double lat2, double lon2, int dist1, int dist2);
+    vector<Airport*> getAirportsInCity(City* city);
 private:
     unordered_map<int, Airport*> airports;
     unordered_map<size_t, City*> cities;

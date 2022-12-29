@@ -55,3 +55,11 @@ void Airport::setLast(Airport *l) {
 vector<Flight> Airport::getFlights() const {
     return flights;
 }
+
+double Airport::getLat() const {
+    return lat;
+}
+
+double Airport::getLon() const {
+    return lon;
+}

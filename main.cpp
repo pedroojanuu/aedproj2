@@ -18,4 +18,7 @@ int main() {
             (*it2)->print();
         cout << '\n';
     }
+
+    cout << airTransport.connectedComponents() << endl;
+    return 0;
 }

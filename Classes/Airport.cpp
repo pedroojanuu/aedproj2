@@ -24,6 +24,10 @@ void Airport::print() const {
     city->print();
 }
 
+string Airport::getName() {
+    return name;
+}
+
 void Airport::addFlight(const Flight &flight) {
     flights.push_back(flight);
 }

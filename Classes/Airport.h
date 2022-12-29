@@ -24,6 +24,7 @@ public:
     Airport* getLast() const;
     void setLast(Airport* l);
     vector<Flight> getFlights() const;
+    string getName();
 private:
     string code;
     string name;

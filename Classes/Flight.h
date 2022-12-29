@@ -11,6 +11,7 @@ class Flight {
 public:
     Flight(Airport* dest, Airline* airline);
     Airport* getDest() const;
+    Airline* getAirline() const;
 private:
     Airport* dest;
     Airline* airline;

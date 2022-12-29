@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Flight.h"
 
 Flight::Flight(Airport *dest, Airline *airline) {
@@ -7,4 +8,8 @@ Flight::Flight(Airport *dest, Airline *airline) {
 
 Airport* Flight::getDest() const {
     return dest;
+}
+
+Airline* Flight::getAirline() const {
+    return airline;
 }

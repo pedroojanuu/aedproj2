@@ -20,3 +20,7 @@ int Airline::hash(const string& code) {
 void Airline::print() const {
     cout << code << ',' << name << endl;
 }
+
+string Airline::getCode() const {
+    return code;
+}

@@ -11,6 +11,7 @@ public:
     Airline(const string& code, const string& name, const string& callsign, const string& country);
     static int hash(const string& code);
     void print() const;
+    string getCode() const;
 private:
     string code;
     string name;

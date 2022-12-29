@@ -5,6 +5,7 @@
 #include <iostream>
 #include <queue>
 #include <cmath>
+#include <algorithm>
 
 using namespace std;
 
@@ -91,20 +92,48 @@ void AirTransport::bfs(Airport* source) {
     }
 }
 
-list<Airport*> AirTransport::shortestPath(Airport *source, Airport *dest) {
+void AirTransport::bfs(Airport* source, const vector<Airline*>& desiredAirlines) {
+    for (const pair<int, Airport*>& airport : airports) airport.second->setVisited(false);
+    queue<Airport*> q;
+    q.push(source);
+    source->setVisited(true);
+    source->setDistance(0);
+    while (!q.empty()) {
+        Airport* u = q.front(); q.pop();
+        //u->print();
+        for (const Flight& flight : u->getFlights()) {
+            Airline* airline = flight.getAirline();
+            if (find(desiredAirlines.begin(), desiredAirlines.end(), airline) != desiredAirlines.end()) {
+                Airport* dest = flight.getDest();
+                if (!dest->isVisited()) {
+                    q.push(dest);
+                    dest->setVisited(true);
+                    dest->setDistance(u->getDistance() + 1);
+                    dest->setLast(u);
+                }
+            }
+        }
+    }
+}
+
+list<Airport*> AirTransport::shortestPath(Airport *source, Airport *dest, const vector<Airline*>& desiredAirlines) {
     list<Airport*> ret;
     if (source == nullptr) {
-        cout << "Aeroporto " << source->getName() << " não existe.";
+        cout << "Aeroporto de origem nao existe.";
         return ret;
     }
     if (dest == nullptr) {
-        cout << "Aeroporto " << dest->getName() << " não existe.";
+        cout << "Aeroporto de destino nao existe.";
         return ret;
     }
-    bfs(source);
+    if (desiredAirlines.empty()) bfs(source);
+    else bfs(source, desiredAirlines);
 
-    if(!dest->isVisited()) {
-        cout << "Não existe ligação entre " << source->getName() << " e " << dest->getName() <<".\n";
+    if(!dest->isVisited() && desiredAirlines.empty()) {
+        cout << "Nao existe ligacao entre " << source->getName() << " e " << dest->getName() <<".\n";
+        return ret;
+    } else if (!dest->isVisited()) {
+        cout << "Nao existe ligacao entre " << source->getName() << " e " << dest->getName() << " com a(s) companhia(s) escolhida(s).\n";
         return ret;
     }
 
@@ -132,11 +161,11 @@ vector<Airport*> AirTransport::getAirportsInCity(City* city) {
     return city->getAirports();
 }
 
-list<list<Airport*>> AirTransport::getPaths(const vector<Airport*>& source, const vector<Airport*>& dest) {
+list<list<Airport*>> AirTransport::getPaths(const vector<Airport*>& source, const vector<Airport*>& dest, const vector<Airline*>& desiredAirlines) {
     list<list<Airport*>> ret;
     for (Airport* src : source) {
         for (Airport * dst : dest) {
-            list<Airport*> path = shortestPath(src, dst);
+            list<Airport*> path = shortestPath(src, dst, desiredAirlines);
             if (ret.empty() || ret.back().size() == path.size()) ret.push_back(path);
             else if (ret.back().size() > path.size()) {
                 ret.pop_back();
@@ -187,4 +216,28 @@ int AirTransport::connectedComponents() {
             dfs(x.second);
         }
     return counter;
+}
+
+vector<Airline*> AirTransport::getAirlines(const vector<string>& codes) {
+    vector<Airline*> ret;
+    for (const string& code : codes) ret.push_back(airlines[Airline::hash(code)]);
+    return ret;
+}
+
+void AirTransport::flightsByAirport(const vector<Airport*>& airport) const {
+    unordered_set<Airline*> airlines;
+    unordered_set<City*> cities;
+    unordered_set<string> countries;
+    unsigned counter = 0;
+    for (const Flight& flight : airport[0]->getFlights()) {
+        counter++;
+        airlines.insert(flight.getAirline());
+        cities.insert(flight.getDest()->getCity());
+        countries.insert(flight.getDest()->getCity()->getCountry());
+        flight.getDest()->print();
+        flight.getAirline()->print();
+        cout << '\n';
+    }
+    cout << "\nExistem " << counter << " voos a partir deste aeroporto, para " << cities.size() << " cidades de " << countries.size() <<
+    " paises, de " << airlines.size() << " companhias diferentes.\n";
 }

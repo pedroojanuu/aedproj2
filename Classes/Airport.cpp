@@ -67,3 +67,7 @@ double Airport::getLat() const {
 double Airport::getLon() const {
     return lon;
 }
+
+City* Airport::getCity() const {
+    return city;
+}

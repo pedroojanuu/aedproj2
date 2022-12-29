@@ -27,6 +27,7 @@ public:
     double getLat() const;
     double getLon() const;
     string getName() const;
+    City* getCity() const;
 private:
     string code;
     string name;

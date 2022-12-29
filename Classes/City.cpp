@@ -25,3 +25,7 @@ vector<Airport*> City::getAirports() const {
 void City::print() const {
     cout << name << ',' << country << endl;
 }
+
+string City::getCountry() const {
+    return country;
+}

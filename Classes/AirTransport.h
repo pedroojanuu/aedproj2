@@ -14,16 +14,18 @@ public:
     AirTransport();
     //~AirTransport();
     void bfs(Airport* source);
+    void bfs(Airport* source, const vector<Airline*>& desiredAirlines);
     void dfs(Airport* source);
     int connectedComponents();
-    list<Airport*> shortestPath (Airport* source, Airport* dest);
+    list<Airport*> shortestPath (Airport* source, Airport* dest, const vector<Airline*>& desiredAirlines);
     vector<Airport*> getAirport(const string& code);
     City* getCity(const string &name, const string &country);
-    list<list<Airport*>> getPaths(const vector<Airport*>& source, const vector<Airport*>& dest);
+    list<list<Airport*>> getPaths(const vector<Airport*>& source, const vector<Airport*>& dest, const vector<Airline*>& desiredAirlines = vector<Airline*>());
     vector<Airport*> getAirportsInRange(double lat, double lon, int dist);
     static double haversine(double lat1, double lon1, double lat2, double lon2);
-    list<list<Airport*>> flightsBySpot(double lat1, double lon1, double lat2, double lon2, int dist1, int dist2);
-    vector<Airport*> getAirportsInCity(City* city);
+    static vector<Airport*> getAirportsInCity(City* city);
+    vector<Airline*> getAirlines(const vector<string>& codes);
+    void flightsByAirport(const vector<Airport*>& airport) const;
 private:
     unordered_map<int, Airport*> airports;
     unordered_map<size_t, City*> cities;

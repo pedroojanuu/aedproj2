@@ -16,6 +16,7 @@ public:
     void addAirport(Airport* airport);
     vector<Airport*> getAirports() const;
     void print() const;
+    string getCountry() const;
 private:
     string name;
     string country;

@@ -32,6 +32,12 @@ int main() {
     //vector<string> codes = {"RYR", "EZY", "BAW", "AAL"};
 
     //vector<Airline*> x = airTransport.getAirlines(codes);
+    list<list<Airport*>> b = airTransport.getPaths(airTransport.getAirport("OPO"), airTransport.getAirportsInCity(airTransport.getCity("New York", "United States")));
+    for (auto & it : b) {
+        for (auto & it2 : it)
+            it2->print();
+        cout << '\n';
+    }
 
     //for (Airline* airline : x) airline->print();
 

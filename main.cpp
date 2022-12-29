@@ -22,4 +22,7 @@ int main() {
     }
 
 
+
+    cout << airTransport.connectedComponents() << endl;
+    return 0;
 }

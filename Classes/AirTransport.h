@@ -14,6 +14,8 @@ public:
     AirTransport();
     //~AirTransport();
     void bfs(Airport* source);
+    void dfs(Airport* source);
+    int connectedComponents();
     list<Airport*> shortestPath (Airport* source, Airport* dest);
     vector<Airport*> getAirport(const string& code);
     City* getCity(const string &name, const string &country);

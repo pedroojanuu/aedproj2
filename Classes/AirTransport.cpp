@@ -93,9 +93,20 @@ void AirTransport::bfs(Airport* source) {
 
 list<Airport*> AirTransport::shortestPath(Airport *source, Airport *dest) {
     list<Airport*> ret;
-    if (source == nullptr || dest == nullptr) return ret;
-
+    if (source == nullptr) {
+        cout << "Aeroporto " << source->getName() << " não existe.";
+        return ret;
+    }
+    if (dest == nullptr) {
+        cout << "Aeroporto " << dest->getName() << " não existe.";
+        return ret;
+    }
     bfs(source);
+
+    if(!dest->isVisited()) {
+        cout << "Não existe ligação entre " << source->getName() << " e " << dest->getName() <<".\n";
+        return ret;
+    }
 
     while (dest != source) {
         ret.push_front(dest);
@@ -155,4 +166,25 @@ vector<Airport*> AirTransport::getAirportsInRange(double lat, double lon, int di
         if (haversine(p.second->getLat(), p.second->getLon(), lat, lon) <= dist)
             ret.push_back(p.second);
     return ret;
+}
+
+void AirTransport::dfs(Airport* source) {
+    source->setVisited(true);
+    for (auto flight : source->getFlights()) {
+        Airport* dest = flight.getDest();
+        if (!dest->isVisited())
+            dfs(dest);
+    }
+}
+
+int AirTransport::connectedComponents() {
+    int counter = 0;
+    for (auto x : airports)
+        x.second->setVisited(false);
+    for (auto x : airports)
+        if (!x.second->isVisited()) {
+            counter++;
+            dfs(x.second);
+        }
+    return counter;
 }

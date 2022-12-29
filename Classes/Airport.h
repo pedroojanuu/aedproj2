@@ -26,6 +26,7 @@ public:
     vector<Flight> getFlights() const;
     double getLat() const;
     double getLon() const;
+    string getName() const;
 private:
     string code;
     string name;

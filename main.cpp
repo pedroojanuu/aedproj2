@@ -1,8 +1,9 @@
 #include <iostream>
 #include "Classes/AirTransport.h"
+#include "Classes/Menu.h"
 
 int main() {
-    AirTransport airTransport;
+    /*AirTransport airTransport;
 
     list<list<Airport*>> a = airTransport.getPaths(airTransport.getAirport("OPO"), airTransport.getAirport("EWR"));
 
@@ -58,6 +59,7 @@ int main() {
     airTransport.flightsByAirport(airTransport.getAirport("LIS"));
 
     airTransport.flightsInRange(airTransport.getAirport("LIS"), 1);
-
+*/
+    Menu::mainMenu();
     return 0;
 }

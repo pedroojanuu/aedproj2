@@ -24,7 +24,7 @@ public:
     vector<Airport*> getAirportsInRange(double lat, double lon, int dist);
     static double haversine(double lat1, double lon1, double lat2, double lon2);
     static vector<Airport*> getAirportsInCity(City* city);
-    vector<Airline*> getAirlines(const vector<string>& codes);
+    Airline* getAirline(const string& code);
     void flightsByAirport(const vector<Airport*>& airport) const;
     void flightsInRange(const vector<Airport*>& airport, int maxflights);
 private:

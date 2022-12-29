@@ -218,10 +218,9 @@ int AirTransport::connectedComponents() {
     return counter;
 }
 
-vector<Airline*> AirTransport::getAirlines(const vector<string>& codes) {
-    vector<Airline*> ret;
-    for (const string& code : codes) ret.push_back(airlines[Airline::hash(code)]);
-    return ret;
+Airline* AirTransport::getAirline(const string& code) {
+    if(airlines.find(Airline::hash(code)) == airlines.end()) return nullptr;
+    return airlines[Airline::hash(code)];
 }
 
 void AirTransport::flightsByAirport(const vector<Airport*>& airport) const {

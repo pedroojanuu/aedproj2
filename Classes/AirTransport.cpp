@@ -241,3 +241,18 @@ void AirTransport::flightsByAirport(const vector<Airport*>& airport) const {
     cout << "\nExistem " << counter << " voos a partir deste aeroporto, para " << cities.size() << " cidades de " << countries.size() <<
     " paises, de " << airlines.size() << " companhias diferentes.\n";
 }
+
+void AirTransport::flightsInRange(const vector<Airport*>& airport, int maxflights) {
+    unsigned counter = 0;
+    unordered_set<City*> cities;
+    unordered_set<string> countries;
+    bfs(airport[0]);
+    for (auto p : airports)
+        if (p.second->isVisited() && p.second->getDistance() <= maxflights && p.second!=airport[0]) {
+            counter++;
+            cities.insert(p.second->getCity());
+            countries.insert(p.second->getCity()->getCountry());
+        }
+    cout << "\nExistem " << counter << " aeroportos, em " << cities.size() << " cidades, de " << countries.size() <<
+    " paises atingiveis com um maximo de " << maxflights << " voo(s).\n";
+}

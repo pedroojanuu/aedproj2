@@ -26,6 +26,7 @@ public:
     static vector<Airport*> getAirportsInCity(City* city);
     vector<Airline*> getAirlines(const vector<string>& codes);
     void flightsByAirport(const vector<Airport*>& airport) const;
+    void flightsInRange(const vector<Airport*>& airport, int maxflights);
 private:
     unordered_map<int, Airport*> airports;
     unordered_map<size_t, City*> cities;

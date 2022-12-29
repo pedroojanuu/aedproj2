@@ -55,7 +55,9 @@ int main() {
 
     cout << airTransport.connectedComponents() << endl;
 
-    airTransport.flightsByAirport(airTransport.getAirport("OPO"));
+    airTransport.flightsByAirport(airTransport.getAirport("LIS"));
+
+    airTransport.flightsInRange(airTransport.getAirport("LIS"), 1);
 
     return 0;
 }

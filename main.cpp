@@ -60,7 +60,8 @@ int main() {
 
     airTransport.flightsInRange(airTransport.getAirport("LIS"), 1);
 */
-    Menu::mainMenu();
+
+    while(Menu::mainMenu());
 
     return 0;
 }

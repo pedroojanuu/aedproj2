@@ -25,7 +25,7 @@ bool is_float(const std::string& s)
     return end != s.c_str() && *end == '\0' && val != HUGE_VAL;
 }
 
-void Menu::mainMenu() {
+bool Menu::mainMenu() {
 
     AirTransport airTransport;
     int option;
@@ -46,9 +46,9 @@ void Menu::mainMenu() {
             break;
         case 3:
             cout << "Adeus!\n";
-            return;
+            return false;
         default:
-            return;
+            return true;
     }
 }
 
@@ -230,7 +230,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
     for(const auto& path : paths) {
         for(auto airport : path) airport->print();
         cout << endl;
-        cout << "Numero de voos: " << path.size()-1 << endl;
+        if(!paths.begin()->empty()) cout << "Numero de voos: " << path.size()-1 << endl;
     }
 }
 

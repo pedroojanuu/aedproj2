@@ -7,7 +7,7 @@
 
 class Menu {
 public:
-    static void mainMenu();
+    static bool mainMenu();
     static void pathMenu(AirTransport& airTransport);
     static void infoMenu(AirTransport& airTransport);
 };

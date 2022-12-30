@@ -261,3 +261,40 @@ void AirTransport::flightsInRange(const vector<Airport*>& airport, int maxflight
     cout << "Existem " << counter << " aeroportos, em " << cities.size() << " cidades, de " << countries.size() <<
     " paises, atingiveis com um maximo de " << maxflights << " voo(s) a partir deste aeroporto.\n";
 }
+
+int AirTransport::diameter() {
+    int maxS = maxSize();
+    int currmax = 0;
+    for(auto airport : airports) airport.second->setVisited(false);
+    for(auto airport1 : airports) {
+        if(componentSize(airport1.second) != maxS) {
+            bfs(airport1.second);
+            for (auto airport2: airports) {
+                currmax = max(currmax, airport2.second->getDistance());
+                airport2.second->setDistance(-1);
+            }
+        }
+    }
+    return currmax;
+}
+
+int AirTransport::componentSize(Airport* source) {
+    int res = 0;
+    source->setVisited(true);
+    for (auto flight : source->getFlights()) {
+        Airport* dest = flight.getDest();
+        if (!dest->isVisited())
+            res += componentSize(dest)+1;
+    }
+    return res;
+}
+
+int AirTransport::maxSize() {
+    int maxi = 0;
+    for(auto airport : airports) airport.second->setVisited(false);
+    for(auto airport : airports)
+        if (!airport.second->isVisited()) {
+            maxi = max(maxi,componentSize(airport.second));
+        }
+    return maxi+1;
+}

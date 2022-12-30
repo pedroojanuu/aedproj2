@@ -27,6 +27,9 @@ public:
     Airline* getAirline(const string& code);
     void flightsByAirport(const vector<Airport*>& airport) const;
     void flightsInRange(const vector<Airport*>& airport, int maxflights);
+    int diameter();
+    int componentSize(Airport *source);
+    int maxSize();
 private:
     unordered_map<int, Airport*> airports;
     unordered_map<size_t, City*> cities;

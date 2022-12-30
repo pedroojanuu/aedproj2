@@ -27,4 +27,3 @@ endif(DOXYGEN_FOUND)
 
 add_executable(AED_Proj2 main.cpp Classes/Airport.cpp Classes/Airport.h Classes/Airline.cpp Classes/Airline.h Classes/Flight.cpp Classes/Flight.h Classes/City.cpp Classes/City.h Classes/AirTransport.cpp Classes/AirTransport.h Classes/Menu.h Classes/Menu.cpp)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=leak")

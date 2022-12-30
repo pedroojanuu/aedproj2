@@ -63,6 +63,12 @@ int main() {
 
     //while(Menu::mainMenu());
     AirTransport airTransport;
-    cout << airTransport.diameter() << endl;
+    //cout << airTransport.diameter() << endl;
+
+    airTransport.globalStats();
+    airTransport.countryStats("Portugal");
+    airTransport.airlineStats(airTransport.getAirline("RYR"));
+    airTransport.topAirportsFlights(3);
+    airTransport.topAirportsAirlines(3);
     return 0;
 }

@@ -24,3 +24,11 @@ void Airline::print() const {
 string Airline::getCode() const {
     return code;
 }
+
+string Airline::getName() const {
+    return name;
+}
+
+string Airline::getCountry() const {
+    return country;
+}

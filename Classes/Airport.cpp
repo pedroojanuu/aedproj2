@@ -71,3 +71,9 @@ double Airport::getLon() const {
 City* Airport::getCity() const {
     return city;
 }
+
+unordered_set<Airline*> Airport::getAirlines() const {
+    unordered_set<Airline*> ret;
+    for (auto flight : flights) ret.insert(flight.getAirline());
+    return ret;
+}

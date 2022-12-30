@@ -6,6 +6,7 @@
 #include <queue>
 #include <cmath>
 #include <algorithm>
+#include <set>
 
 using namespace std;
 
@@ -297,4 +298,67 @@ int AirTransport::maxSize() {
             maxi = max(maxi,componentSize(airport.second));
         }
     return maxi+1;
+}
+
+void AirTransport::globalStats() {
+    cout << "Existem " << airports.size() << " aeroportos na rede." << endl;
+    cout << "Existem " << airlines.size() << " companhias aereas na rede." << endl;
+    int flights = 0;
+    for (auto p : airports)
+        flights += p.second->getFlights().size();
+    cout << "Existem " << flights << " voos na rede." << endl;
+}
+
+void AirTransport::countryStats(const string& country) {
+    int airportsNo = 0;
+    int flightsNo = 0;
+    int airlinesNo = 0;
+    for (auto p : airports)
+        if (p.second->getCity()->getCountry() == country) {
+            airportsNo++;
+            flightsNo += p.second->getFlights().size();
+        }
+    for (auto p : airlines)
+        if (p.second->getCountry() == country) airlinesNo++;
+    cout << country << " tem " << airportsNo << " aeroportos, de onde parte um total de " << flightsNo << " voos." << endl;
+    cout << "Ha " << airlinesNo << " companhias aereas registadas nesse pais." << endl;
+}
+
+void AirTransport::airlineStats(Airline* airline) {
+    int flightsNo = 0;
+    unordered_set<Airport*> airp;
+    for (auto p : airports)
+        for (auto flight : p.second->getFlights())
+            if (flight.getAirline() == airline) {
+                flightsNo++;
+                airp.insert(p.second);
+            }
+    cout << "A companhia " << airline->getName() << " tem um total de " << flightsNo << " voos, de um total de "
+    << airp.size() << " aeroportos." << endl;
+}
+
+void AirTransport::topAirportsFlights(unsigned int k) {
+    vector<Airport*> aux;
+    for (auto p : airports) aux.push_back(p.second);
+    sort(aux.begin(), aux.end(), [] (Airport* a1, Airport* a2) {
+        return a1->getFlights().size() > a2->getFlights().size();
+    });
+    cout << "Os " << k << " aeroportos com mais voos sao:" << endl;
+    for (size_t i = 0; i < k; i++) {
+        aux[i]->print();
+        cout << aux[i]->getFlights().size() << " voos.\n\n";
+    }
+}
+
+void AirTransport::topAirportsAirlines(unsigned int k) {
+    vector<Airport*> aux;
+    for (auto p : airports) aux.push_back(p.second);
+    sort(aux.begin(), aux.end(), [] (Airport* a1, Airport* a2) {
+        return a1->getAirlines().size() > a2->getAirlines().size();
+    });
+    cout << "Os " << k << " aeroportos com mais companhias com partidas deles sao: " << endl;
+    for (size_t i = 0; i < k; i++) {
+        aux[i]->print();
+        cout << aux[i]->getAirlines().size() << " companhias.\n\n";
+    }
 }

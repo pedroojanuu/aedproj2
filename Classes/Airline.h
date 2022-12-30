@@ -12,6 +12,8 @@ public:
     static int hash(const string& code);
     void print() const;
     string getCode() const;
+    string getName() const;
+    string getCountry() const;
 private:
     string code;
     string name;

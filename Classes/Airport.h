@@ -5,11 +5,13 @@
 #include "Flight.h"
 
 #include <string>
+#include <unordered_set>
 
 using namespace std;
 
 class Flight;
 class City;
+class Airline;
 
 class Airport {
 public:
@@ -28,6 +30,7 @@ public:
     double getLon() const;
     string getName() const;
     City* getCity() const;
+    unordered_set<Airline*> getAirlines() const;
 private:
     string code;
     string name;

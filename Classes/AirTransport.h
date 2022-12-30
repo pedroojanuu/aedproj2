@@ -30,6 +30,11 @@ public:
     int diameter();
     int componentSize(Airport *source);
     int maxSize();
+    void globalStats();
+    void countryStats(const string& country);
+    void airlineStats(Airline* airline);
+    void topAirportsFlights(unsigned k);
+    void topAirportsAirlines(unsigned k);
 private:
     unordered_map<int, Airport*> airports;
     unordered_map<size_t, City*> cities;

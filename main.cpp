@@ -9,7 +9,9 @@
 * (up202108867@edu.fe.up.pt) and
 * Pedro Simão Januário Vieira (202108768) (up202108768@edu.fe.up.pt), both belonging to Group No. 10, from class 2LEIC01.\n \n
  * It supports showing the best way to travel by airplane between two places, information about a given airport and general
- * statistics about the provided air traffic network.
+ * statistics about the provided air traffic network.\n \n
+ * We have represented the air traffic network by a directed graph, where the airport are the nodes and the flights are the edges.
+ * Each airport has a vector of departing flights.
 */
 
 int main() {

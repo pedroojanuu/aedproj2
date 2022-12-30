@@ -7,9 +7,10 @@
 
 class Menu {
 public:
-    static bool mainMenu();
+    static bool mainMenu(AirTransport& airTransport);
     static void pathMenu(AirTransport& airTransport);
     static void infoMenu(AirTransport& airTransport);
+    static void statsMenu(AirTransport& transport);
 };
 
 

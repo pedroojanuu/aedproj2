@@ -226,7 +226,9 @@ int AirTransport::connectedComponents() {
 }
 
 Airline* AirTransport::getAirline(const string& code) {
-    if(airlines.find(Airline::hash(code)) == airlines.end()) return nullptr;
+    if(airlines.find(Airline::hash(code)) == airlines.end()) {
+        return nullptr;
+    }
     return airlines[Airline::hash(code)];
 }
 
@@ -266,7 +268,10 @@ void AirTransport::flightsInRange(const vector<Airport*>& airport, int maxflight
 int AirTransport::diameter() {
     int maxS = maxSize();
     int currmax = 0;
-    for(auto airport : airports) airport.second->setVisited(false);
+    for(auto airport : airports) {
+        airport.second->setVisited(false);
+        airport.second->setDistance(-1);
+    }
     for(auto airport1 : airports) {
         if(componentSize(airport1.second) != maxS) {
             bfs(airport1.second);
@@ -318,6 +323,10 @@ void AirTransport::countryStats(const string& country) {
             airportsNo++;
             flightsNo += p.second->getFlights().size();
         }
+    if(airportsNo == 0) {
+        cout << "Pais nao encontrado." << endl;
+        return;
+    }
     for (auto p : airlines)
         if (p.second->getCountry() == country) airlinesNo++;
     cout << country << " tem " << airportsNo << " aeroportos, de onde parte um total de " << flightsNo << " voos." << endl;
@@ -325,6 +334,10 @@ void AirTransport::countryStats(const string& country) {
 }
 
 void AirTransport::airlineStats(Airline* airline) {
+    if(airline == nullptr) {
+        cout << "Companhia nao encontrada." << endl;
+        return;
+    }
     int flightsNo = 0;
     unordered_set<Airport*> airp;
     for (auto p : airports)

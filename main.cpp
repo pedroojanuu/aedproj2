@@ -60,8 +60,8 @@ int main() {
 
     airTransport.flightsInRange(airTransport.getAirport("LIS"), 1);
 */
-
-    while(Menu::mainMenu());
+    AirTransport airTransport;
+    while(Menu::mainMenu(airTransport));
     //AirTransport airTransport;
     //cout << airTransport.diameter() << endl;
 

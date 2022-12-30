@@ -25,17 +25,17 @@ bool is_float(const std::string& s)
     return end != s.c_str() && *end == '\0' && val != HUGE_VAL;
 }
 
-bool Menu::mainMenu() {
+bool Menu::mainMenu(AirTransport& airTransport) {
 
-    AirTransport airTransport;
     int option;
 
     cout << "\nEscolha uma opcao:\n" <<
-    "1.Ver melhor maneira de voar de um local para outro\n" <<
-    "2.Informacoes de um aeroporto\n" <<
-    "3.Sair\n";
+    "1. Ver melhor maneira de voar de um local para outro\n" <<
+    "2. Informacoes de um aeroporto\n" <<
+    "3. Estatisticas da rede\n"
+    "4. Sair\n";
 
-    option = readOption(3);
+    option = readOption(4);
 
     switch(option) {
         case 1:
@@ -45,6 +45,9 @@ bool Menu::mainMenu() {
             infoMenu(airTransport);
             break;
         case 3:
+            statsMenu(airTransport);
+            break;
+        case 4:
             cout << "Adeus!\n";
             return false;
         default:
@@ -80,9 +83,10 @@ void Menu::pathMenu(AirTransport& airTransport) {
             while(true) {
                 getline(cin, code);
                 cout << endl;
-                if(code.length() == 3 && airTransport.getAirport(code).size() == 1) break;
-                cout << "Codigo invalido ou aeroporto inexistente.\n" <<
-                "Por favor, tente novamente.\n";
+                if(code.length() == 3 && !airTransport.getAirport(code).empty()) break;
+                else if(code.length() != 3) cout << "Codigo invalido.\n";
+                else cout << "Aeroporto nao encontrado.\n";
+                cout << "Por favor, tente novamente.\n";
             }
             source = airTransport.getAirport(code);
             break;
@@ -164,7 +168,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
                 getline(cin, country);
                 cout << endl;
                 if(airTransport.getCity(name,country) != nullptr) break;
-                cout << "Cidade ou pais inexistente.\n" <<
+                cout << "Cidade ou pais nao encontrados.\n" <<
                      "Por favor, tente novamente.\n\n";
             }
             dest = AirTransport::getAirportsInCity(airTransport.getCity(name,country));
@@ -241,9 +245,10 @@ void Menu::infoMenu(AirTransport& airTransport) {
     while(true) {
         getline(cin, code);
         cout << endl;
-        if(code.length() == 3 && airTransport.getAirport(code).size() == 1) break;
-        cout << "Codigo invalido ou aeroporto inexistente.\n" <<
-             "Por favor, tente novamente.\n";
+        if(code.length() == 3 && !airTransport.getAirport(code).empty()) break;
+        else if(code.length() != 3) cout << "Codigo invalido.\n";
+        else cout << "Aeroporto nao encontrado.\n";
+        cout << "Por favor, tente novamente.\n";
     }
     airTransport.flightsByAirport(airTransport.getAirport(code));
 
@@ -256,4 +261,44 @@ void Menu::infoMenu(AirTransport& airTransport) {
         cout << "Numero invalido.\nPor favor tente novamente." << endl;
     }
     airTransport.flightsInRange(airTransport.getAirport(code), stoi(num));
+}
+
+void Menu::statsMenu(AirTransport& airTransport) {
+    int option;
+
+    cout << "Escolha uma opcao:\n" <<
+         "1. Estatisticas globais\n" <<
+         "2. Estatisticas de um pais\n" <<
+         "3. Estatisticas de uma companhia\n"
+         "4. Voltar ao Menu\n";
+
+    option = readOption(4);
+    string country;
+    string airline;
+    switch(option) {
+        case 1:
+            airTransport.globalStats();
+            cout << "\nDiametro do componente principal: " << airTransport.diameter() << endl;
+            break;
+        case 2:
+            cout << "Insira o nome do pais:\n";
+            getline(cin,country);
+            cout << endl;
+            airTransport.countryStats(country);
+            break;
+        case 3:
+            cout << "Insira o codigo da companhia:\n";
+            while(true) {
+                getline(cin,airline);
+                cout << endl;
+                if(airline.length() == 3 || airTransport.getAirline(airline) != nullptr) break;
+                cout << "Codigo invalido. Por favor, insira novamente.\n";
+            }
+            airTransport.airlineStats(airTransport.getAirline(airline));
+        case 4:
+            return;
+        default:
+            return;
+    }
+    return;
 }

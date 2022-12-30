@@ -9,7 +9,7 @@ using namespace std;
 int readOption(int numberOfOptions) {
     string option;
     while(true) {
-        cin >> option;
+        getline(cin, option);
         cout << endl;
         if(option.length() == 1 && isdigit(option[0]) && stoi(option) <= numberOfOptions && stoi(option) > 0) break;
         cout << "Numero invalido, por favor tente novamente.\n";
@@ -78,7 +78,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
         case 1:
             cout << "Insira o codigo do aeroporto de origem:\n";
             while(true) {
-                cin >> code;
+                getline(cin, code);
                 cout << endl;
                 if(code.length() == 3 && airTransport.getAirport(code).size() == 1) break;
                 cout << "Codigo invalido ou aeroporto inexistente.\n" <<
@@ -89,9 +89,9 @@ void Menu::pathMenu(AirTransport& airTransport) {
         case 2:
             while(true) {
                 cout << "Insira o nome da cidade de origem:\n";
-                cin >> name;
+                getline(cin, name);
                 cout << "\nInsira o nome do pais de origem:\n";
-                cin >> country;
+                getline(cin, country);
                 cout << endl;
                 if(airTransport.getCity(name,country) != nullptr) break;
                 cout << "Cidade ou pais inexistente.\n" <<
@@ -102,7 +102,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
         case 3:
             cout << "Insira a latitude de origem:\n";
             while(true) {
-                cin >> latstr;
+                getline(cin, latstr);
                 cout << endl;
                 if(is_float(latstr)) break;
                 cout << "Latitude invalida.\n" <<
@@ -110,7 +110,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
             }
             cout << "Insira a longitude de origem:\n";
             while(true) {
-                cin >> lonstr;
+                getline(cin, lonstr);
                 cout << endl;
                 if(is_float(lonstr)) break;
                 cout << "Longitude invalida.\n" <<
@@ -118,7 +118,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
             }
             cout << "\nInsira a distancia maxima a origem:\n";
             while(true) {
-                cin >> radiusstr;
+                getline(cin, radiusstr);
                 cout << endl;
                 if (is_float(radiusstr) && stoi(radiusstr) >= 0) break;
                 cout << "Distancia invalida.\n" <<
@@ -148,7 +148,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
         case 1:
             cout << "Insira o codigo do aeroporto de destino:\n";
             while(true) {
-                cin >> code;
+                getline(cin, code);
                 cout << endl;
                 if(code.length() == 3 && airTransport.getAirport(code).size() == 1) break;
                 cout << "Codigo invalido ou aeroporto inexistente.\n" <<
@@ -159,9 +159,9 @@ void Menu::pathMenu(AirTransport& airTransport) {
         case 2:
             while(true) {
                 cout << "Insira o nome da cidade de destino:\n";
-                cin >> name;
+                getline(cin, name);
                 cout << "\nInsira o nome do pais de destino:\n";
-                cin >> country;
+                getline(cin, country);
                 cout << endl;
                 if(airTransport.getCity(name,country) != nullptr) break;
                 cout << "Cidade ou pais inexistente.\n" <<
@@ -172,7 +172,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
         case 3:
             cout << "Insira a latitude de destino:\n";
             while(true) {
-                cin >> latstr;
+                getline(cin, latstr);
                 cout << endl;
                 if(is_float(latstr)) break;
                 cout << "Latitude invalida.\n" <<
@@ -180,7 +180,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
             }
             cout << "Insira a longitude de destino:\n";
             while(true) {
-                cin >> lonstr;
+                getline(cin, lonstr);
                 cout << endl;
                 if(is_float(lonstr)) break;
                 cout << "Longitude invalida.\n" <<
@@ -188,7 +188,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
             }
             cout << "\nInsira a distancia maxima a destino:\n";
             while(true) {
-                cin >> radiusstr;
+                getline(cin, radiusstr);
                 cout << endl;
                 if (is_float(radiusstr) && stoi(radiusstr) >= 0) break;
                 cout << "Distancia invalida.\n" <<
@@ -208,7 +208,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
     vector<Airline*> desiredAirlines;
     cout << "Tem preferencia em relacao a companhias aereas? Sim/Nao\n";
     while(true) {
-        cin >> answer;
+        getline(cin, answer);
         cout << endl;
         if(answer == "Sim" || answer == "Nao") break;
         cout << "Opcao invalida, por favor responda apenas Sim/Nao\n";
@@ -219,7 +219,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
         "Quando terminar, insira 0.\n";
         string airline;
         while(true) {
-            cin >> airline;
+            getline(cin, airline);
             cout << endl;
             if(airline == "0") break;
             if(airTransport.getAirline(airline) != nullptr) desiredAirlines.push_back(airTransport.getAirline(airline));
@@ -239,7 +239,7 @@ void Menu::infoMenu(AirTransport& airTransport) {
     cout << "Insira o codigo do aeroporto:\n";
     string code;
     while(true) {
-        cin >> code;
+        getline(cin, code);
         cout << endl;
         if(code.length() == 3 && airTransport.getAirport(code).size() == 1) break;
         cout << "Codigo invalido ou aeroporto inexistente.\n" <<
@@ -250,7 +250,7 @@ void Menu::infoMenu(AirTransport& airTransport) {
     cout << "\nInsira um numero maximo de voos:\n";
     string num;
     while (true) {
-        cin >> num;
+        getline(cin, num);
         cout << endl;
         if (is_float(num) && stoi(num) >= 1) break;
         cout << "Numero invalido.\nPor favor tente novamente." << endl;

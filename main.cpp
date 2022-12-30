@@ -61,14 +61,14 @@ int main() {
     airTransport.flightsInRange(airTransport.getAirport("LIS"), 1);
 */
 
-    //while(Menu::mainMenu());
-    AirTransport airTransport;
+    while(Menu::mainMenu());
+    //AirTransport airTransport;
     //cout << airTransport.diameter() << endl;
 
-    airTransport.globalStats();
-    airTransport.countryStats("Portugal");
-    airTransport.airlineStats(airTransport.getAirline("RYR"));
-    airTransport.topAirportsFlights(3);
-    airTransport.topAirportsAirlines(3);
+    //airTransport.globalStats();
+    //airTransport.countryStats("Portugal");
+    //airTransport.airlineStats(airTransport.getAirline("RYR"));
+    //airTransport.topAirportsFlights(3);
+    //airTransport.topAirportsAirlines(3);
     return 0;
 }

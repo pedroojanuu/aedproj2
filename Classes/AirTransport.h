@@ -12,7 +12,7 @@
 class AirTransport {
 public:
     AirTransport();
-    //~AirTransport();
+    ~AirTransport();
     void bfs(Airport* source);
     void bfs(Airport* source, const vector<Airline*>& desiredAirlines);
     void dfs(Airport* source);

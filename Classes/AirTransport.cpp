@@ -71,6 +71,12 @@ AirTransport::AirTransport() {
     //for (const pair<const int, Airline*>& airline : airlines) airline.second->print();
 }
 
+AirTransport::~AirTransport() {
+    for (auto p : airlines) delete p.second;
+    for (auto p : cities) delete p.second;
+    for (auto p : airports) delete p.second;
+}
+
 void AirTransport::bfs(Airport* source) {
     for (const pair<int, Airport*>& airport : airports) airport.second->setVisited(false);
     queue<Airport*> q;

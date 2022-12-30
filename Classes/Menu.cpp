@@ -50,6 +50,7 @@ bool Menu::mainMenu() {
         default:
             return true;
     }
+    return true;
 }
 
 void Menu::pathMenu(AirTransport& airTransport) {

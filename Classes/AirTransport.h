@@ -9,11 +9,18 @@
 #include "City.h"
 #include "Airline.h"
 
+/**
+ * @class AirTransport implements
+ * A class that serves the purpose of having all the information about the network and operations over it centralized.\n
+ * It accommodates pointers to all Airports, Cities and Airlines.
+ */
+
 class AirTransport {
 public:
-    AirTransport();
-    ~AirTransport();
-    void bfs(Airport* source);
+    AirTransport(); /*!< Default constructor. Reads the provided csv files and dynamically allocates memory for the
+ * airports, cities and airlines, which leads us to using pointers all along the program. */
+    ~AirTransport(); /*!< Destructor that deletes the Airline, City and Airport objects initially created by the constructor. */
+    void bfs(Airport* source); /*!<  */
     void bfs(Airport* source, const vector<Airline*>& desiredAirlines);
     void dfs(Airport* source);
     int connectedComponents();

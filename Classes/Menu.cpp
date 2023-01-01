@@ -275,10 +275,13 @@ void Menu::statsMenu(AirTransport& airTransport) {
     option = readOption(4);
     string country;
     string airline;
+    int diam;
     switch(option) {
         case 1:
             airTransport.globalStats();
-            cout << "\nDiametro do componente principal: " << airTransport.diameter() << endl;
+            cout << "\nA calcular diametro do componente principal..." << endl;
+            diam = airTransport.diameter();
+            cout << "\nDiametro do componente principal: " << diam << endl;
             break;
         case 2:
             cout << "Insira o nome do pais:\n";
@@ -300,5 +303,4 @@ void Menu::statsMenu(AirTransport& airTransport) {
         default:
             return;
     }
-    return;
 }

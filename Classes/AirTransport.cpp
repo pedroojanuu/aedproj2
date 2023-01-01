@@ -346,7 +346,7 @@ void AirTransport::airlineStats(Airline* airline) {
                 flightsNo++;
                 airp.insert(p.second);
             }
-    cout << "A companhia " << airline->getName() << " tem um total de " << flightsNo << " voos, de um total de "
+    cout << "A companhia " << airline->getName() << " tem um total de " << flightsNo << " voos, desde um total de "
     << airp.size() << " aeroportos." << endl;
 }
 

@@ -13,14 +13,14 @@
 class Menu {
 public:
     static bool mainMenu(AirTransport& airTransport); /*!< Provides the UI main menu. Is called by main and receives
- * an instance of AirTransport in order to call the last's
- * necessary methods. */
+ * an instance of AirTransport in order to call the last's necessary methods. */
     static void pathMenu(AirTransport& airTransport); /*!< Provides the UI first submenu, that helps the user find
  * paths between places. Is called by mainMenu() and receives an instance of AirTransport in order to call the last's
  * necessary methods. */
     static void infoMenu(AirTransport& airTransport); /*!< Provides the UI second submenu, that helps the user get information
  * about a desired airport. Is called by mainMenu() and receives an instance of AirTransport in order to call the last's
  * necessary methods. */
+    static void statsMenu(AirTransport& airTransport);
 };
 
 

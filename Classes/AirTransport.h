@@ -12,7 +12,9 @@
 /**
  * @class AirTransport implements
  * A class that serves the purpose of having all the information about the network and operations over it centralized.\n
- * It accommodates pointers to all Airports, Cities and Airlines.
+ * It accommodates pointers to all Airports, Cities and Airlines.\n
+ * As described in the documentation's main page, the given network is represented in a Graph, where Airports are the
+ * nodes and Flights are the edges.
  */
 
 class AirTransport {
@@ -20,10 +22,15 @@ public:
     AirTransport(); /*!< Default constructor. Reads the provided csv files and dynamically allocates memory for the
  * airports, cities and airlines, which leads us to using pointers all along the program. */
     ~AirTransport(); /*!< Destructor that deletes the Airline, City and Airport objects initially created by the constructor. */
-    void bfs(Airport* source); /*!<  */
-    void bfs(Airport* source, const vector<Airline*>& desiredAirlines);
-    void dfs(Airport* source);
-    int connectedComponents();
+    void bfs(Airport* source); /*!< Implementation of Breadth-First-Search given a source airport. It marks the visited airports as
+ * so and stores the distance to the source airport, as well as storing, for each airport it traverses, the last visited airport.
+ * This is important to build routes.\n Complexity: O(|V| + |E|), where |V| is the number of airports and |E| the number of flights. */
+    void bfs(Airport* source, const vector<Airline*>& desiredAirlines); /*!< Same as the BFS implementation but with airline
+ * filtering, allowing to make only certain edges (flights of the desired airlines) eligible for traversing. */
+    void dfs(Airport* source); /*!< Implementation of Depth-First-Search given a source airport\n
+ * Complexity: O(|V| + |E|). */
+    int connectedComponents(); /*!< Returns the numbers of the air traffic network connected components (i.e., groups of airports
+ * that are only reachable from within their group).\n Complexity: O(|V|²). */
     list<Airport*> shortestPath (Airport* source, Airport* dest, const vector<Airline*>& desiredAirlines);
     vector<Airport*> getAirport(const string& code);
     City* getCity(const string &name, const string &country);

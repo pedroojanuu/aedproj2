@@ -66,10 +66,6 @@ AirTransport::AirTransport() {
 
         airports[Airport::hash(source)]->addFlight(flight);
     }
-
-    //for (const pair<const int, Airport*>& airport : airports) airport.second->print();
-    //for (const pair<const size_t, City*>& city : cities) city.second->print();
-    //for (const pair<const int, Airline*>& airline : airlines) airline.second->print();
 }
 
 AirTransport::~AirTransport() {
@@ -86,7 +82,6 @@ void AirTransport::bfs(Airport* source) {
     source->setDistance(0);
     while (!q.empty()) {
         Airport* u = q.front(); q.pop();
-        //u->print();
         for (const Flight& flight : u->getFlights()) {
             Airport* dest = flight.getDest();
             if (!dest->isVisited()) {
@@ -107,7 +102,6 @@ void AirTransport::bfs(Airport* source, const vector<Airline*>& desiredAirlines)
     source->setDistance(0);
     while (!q.empty()) {
         Airport* u = q.front(); q.pop();
-        //u->print();
         for (const Flight& flight : u->getFlights()) {
             Airline* airline = flight.getAirline();
             if (find(desiredAirlines.begin(), desiredAirlines.end(), airline) != desiredAirlines.end()) {

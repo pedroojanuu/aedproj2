@@ -24,21 +24,31 @@ public:
     ~AirTransport(); /*!< Destructor that deletes the Airline, City and Airport objects initially created by the constructor. */
     void bfs(Airport* source); /*!< Implementation of Breadth-First-Search given a source airport. It marks the visited airports as
  * so and stores the distance to the source airport, as well as storing, for each airport it traverses, the last visited airport.
- * This is important to build routes.\n Complexity: O(|V| + |E|), where |V| is the number of airports and |E| the number of flights. */
+ * This is important to build routes.\n Complexity: O(|V|+|E|), where |V| is the number of airports and |E| the number of flights. */
     void bfs(Airport* source, const vector<Airline*>& desiredAirlines); /*!< Same as the BFS implementation but with airline
  * filtering, allowing to make only certain edges (flights of the desired airlines) eligible for traversing. */
     void dfs(Airport* source); /*!< Implementation of Depth-First-Search given a source airport\n
- * Complexity: O(|V| + |E|). */
+ * Complexity: O(|V|+|E|). */
     int connectedComponents(); /*!< Returns the numbers of the air traffic network connected components (i.e., groups of airports
  * that are only reachable from within their group).\n Complexity: O(|V|²). */
-    list<Airport*> shortestPath (Airport* source, Airport* dest, const vector<Airline*>& desiredAirlines);
-    vector<Airport*> getAirport(const string& code);
-    City* getCity(const string &name, const string &country);
-    list<list<Airport*>> getPaths(const vector<Airport*>& source, const vector<Airport*>& dest, const vector<Airline*>& desiredAirlines = vector<Airline*>());
-    vector<Airport*> getAirportsInRange(double lat, double lon, int dist);
-    static double haversine(double lat1, double lon1, double lat2, double lon2);
-    static vector<Airport*> getAirportsInCity(City* city);
-    Airline* getAirline(const string& code);
+    list<Airport*> shortestPath (Airport* source, Airport* dest, const vector<Airline*>& desiredAirlines); /*!< Returns one of the
+ * shortest paths between two given airports filtering by desired airlines (empty if no preference).\n
+ * Complexity: O(|V|+|E|) (bfs call). */
+    vector<Airport*> getAirport(const string& code); /*!< Returns a pointer to the airport with given IATA code or \a nullptr if
+ * it does not exist.\n Complexity: O(1). */
+    City* getCity(const string &name, const string &country); /*!< Returns a pointer to the city with given name and country
+ * or \a nullptr if it does not exist.\n Complexity: O(1). */
+    list<list<Airport*>> getPaths(const vector<Airport*>& source, const vector<Airport*>& dest, const vector<Airline*>& desiredAirlines = vector<Airline*>());/*!<
+ * Returns, for a given list of source Airports (pointers to them) and a given list of destination Airports, a list of, for each pair
+ * Source Airport, Destination Airport, one of the shortest path between them.\n Complexity: O(|V|²(|V| + |E|)). */
+    vector<Airport*> getAirportsInRange(double lat, double lon, int dist); /*!< Returns a vector of pointers to all the airports
+ * in a given radius (in kilometres), given a center by its latitude and its longitude.\n Complexity: O(|V|). */
+    static double haversine(double lat1, double lon1, double lat2, double lon2); /*!< Returns a distance between two points
+ * given their latitudes and longitudes (implementing the Haversine formula).\n Complexity: O(1). */
+    static vector<Airport*> getAirportsInCity(City* city); /*!< Returns a vector of pointers to all the airports in a given City
+ * pointer.\n Complexity: O(1). */
+    Airline* getAirline(const string& code); /*!< Given an ICAO code, returns a pointer to the airline it belongs to or \a nullptr
+ * if it does not exist.\n Complexity: O(1). */
     void flightsByAirport(const vector<Airport*>& airport) const;
     void flightsInRange(const vector<Airport*>& airport, int maxflights);
     int diameter();

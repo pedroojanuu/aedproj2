@@ -27,7 +27,10 @@ public:
     Airport(const string& code, const string& name, City* city, double lat, double lon); /*!< A constructor that receives a
  * a IATA code, a name, a pointer to a City and coordinates. */
     static int hash(const string& code); /*!< Hash function that returns an integer based on a given IATA code.
- * \n Complexity: O(n), with\a n being the length of the provided code. */
+ * \n Complexity: the complexity of the function's algorithm is O(n), with \a n being the length of the given code.
+ * However, given the context of the program and the provided air traffic dataset, since all IATA codes have exactly 3 characters
+ * and the function is only called when it has previously been checked that the given input has 3 characters, the O(n) 'is' O(3),
+ * which is O(1) complexity. */
     void print() const; /*!< Prints the airport's IATA code, name and calls City's print() method, in order to print the airport's
  * city name and country. */
     void addFlight(const Flight& flight); /*!< Adds a departing flight (graph's edge) to the airport's vector of departing flights. */

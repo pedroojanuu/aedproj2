@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">Projeto 2 AED<span id="projectnumber">&#160;2022/23</span>
    </div>
@@ -78,12 +79,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:af127fa5884552d59d9444ef8792e7c44"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#af127fa5884552d59d9444ef8792e7c44">mainMenu</a> ()</td></tr>
-<tr class="separator:af127fa5884552d59d9444ef8792e7c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1310b0462e0b48764a2a5b90294c653"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#ad1310b0462e0b48764a2a5b90294c653">mainMenu</a> (<a class="el" href="class_air_transport.html">AirTransport</a> &amp;airTransport)</td></tr>
+<tr class="separator:ad1310b0462e0b48764a2a5b90294c653"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f6cd456548a7af1e115222e95016548"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a4f6cd456548a7af1e115222e95016548">pathMenu</a> (<a class="el" href="class_air_transport.html">AirTransport</a> &amp;airTransport)</td></tr>
 <tr class="separator:a4f6cd456548a7af1e115222e95016548"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acafda199c6bc2f1c5d7a992b4d6fdbec"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#acafda199c6bc2f1c5d7a992b4d6fdbec">infoMenu</a> (<a class="el" href="class_air_transport.html">AirTransport</a> &amp;airTransport)</td></tr>
 <tr class="separator:acafda199c6bc2f1c5d7a992b4d6fdbec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90dd1b925bb42ed7d014d4cc4a92ea5a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a90dd1b925bb42ed7d014d4cc4a92ea5a">statsMenu</a> (<a class="el" href="class_air_transport.html">AirTransport</a> &amp;airTransport)</td></tr>
+<tr class="separator:a90dd1b925bb42ed7d014d4cc4a92ea5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A class with no fields and only static methods that provides the program's user interface. </p>
@@ -111,12 +114,12 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Provides the UI second submenu, that helps the user get information about a desired airport. Is called by <a class="el" href="class_menu.html#af127fa5884552d59d9444ef8792e7c44">mainMenu()</a> and receives an instance of <a class="el" href="class_air_transport.html">AirTransport</a> in order to call the last's necessary methods. </p>
+<p >Provides the UI second submenu, that helps the user get information about a desired airport. Is called by <a class="el" href="class_menu.html#ad1310b0462e0b48764a2a5b90294c653">mainMenu()</a> and receives an instance of <a class="el" href="class_air_transport.html">AirTransport</a> in order to call the last's necessary methods. </p>
 
 </div>
 </div>
-<a id="af127fa5884552d59d9444ef8792e7c44" name="af127fa5884552d59d9444ef8792e7c44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af127fa5884552d59d9444ef8792e7c44">&#9670;&#160;</a></span>mainMenu()</h2>
+<a id="ad1310b0462e0b48764a2a5b90294c653" name="ad1310b0462e0b48764a2a5b90294c653"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1310b0462e0b48764a2a5b90294c653">&#9670;&#160;</a></span>mainMenu()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,7 +130,8 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool Menu::mainMenu </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_air_transport.html">AirTransport</a> &amp;&#160;</td>
+          <td class="paramname"><em>airTransport</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -137,7 +141,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Provides the UI main menu and instantiates an object of <a class="el" href="class_air_transport.html">AirTransport</a>. </p>
+<p >Provides the UI main menu. Is called by main and receives an instance of <a class="el" href="class_air_transport.html">AirTransport</a> in order to call the last's necessary methods.<br  />
+Returns <b>false</b> when the user wants to exit the program, <b>true</b> otherwise. </p>
 
 </div>
 </div>
@@ -164,7 +169,34 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Provides the UI first submenu, that helps the user find paths between places. Is called by <a class="el" href="class_menu.html#af127fa5884552d59d9444ef8792e7c44">mainMenu()</a> and receives an instance of <a class="el" href="class_air_transport.html">AirTransport</a> in order to call the last's necessary methods. </p>
+<p >Provides the UI first submenu, that helps the user find paths between places. Is called by <a class="el" href="class_menu.html#ad1310b0462e0b48764a2a5b90294c653">mainMenu()</a> and receives an instance of <a class="el" href="class_air_transport.html">AirTransport</a> in order to call the last's necessary methods. </p>
+
+</div>
+</div>
+<a id="a90dd1b925bb42ed7d014d4cc4a92ea5a" name="a90dd1b925bb42ed7d014d4cc4a92ea5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90dd1b925bb42ed7d014d4cc4a92ea5a">&#9670;&#160;</a></span>statsMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::statsMenu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_air_transport.html">AirTransport</a> &amp;&#160;</td>
+          <td class="paramname"><em>airTransport</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Provides the UI third submenu, that helps the user get information about the air traffic network, a country or an airline. </p>
 
 </div>
 </div>

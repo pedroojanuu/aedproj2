@@ -235,7 +235,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
     for(const auto& path : paths) {
         for(auto airport : path) airport->print();
         cout << endl;
-        if(!paths.begin()->empty()) cout << "Numero de voos: " << path.size()-1 << endl;
+        if(!paths.begin()->empty()) cout << "Numero de voos: " << path.size()-1 << endl << endl;
     }
 }
 

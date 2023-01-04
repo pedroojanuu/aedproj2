@@ -12,7 +12,9 @@
  * It supports showing the best way to travel by airplane between two places, information about a given airport and general
  * statistics about the provided air traffic network.\n \n
  * We have represented the air traffic network by a directed graph, where the airport are the nodes and the flights are the edges.
- * Each airport has a vector of departing flights.
+ * Each airport has a vector of departing flights.\n \n \n
+ * The logo photo was taken by Pedro Januário on Porto Airport (OPO) on the 1st of May 2017.
+ * It can be found on https://commons.wikimedia.org/wiki/File:Ryanair_B738_departing_LPPR.jpg
 */
 
 int main() {

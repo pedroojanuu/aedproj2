@@ -15,7 +15,10 @@ public:
     Airline(const string& code, const string& name, const string& callsign, const string& country); /*!< A constructor that
  * receives a ICAO code, a name, a callsign and a country name. */
     static int hash(const string& code); /*!< Hash function that returns an integer based on a given ICAO code.
- * \n Complexity: O(n), with\a n being the length of the provided code. */
+ * \n Complexity: the complexity of the function's algorithm is O(n), with \a n being the length of the given code.
+ * However, given the context of the program and the provided air traffic dataset, since all ICAO codes have exactly 3 characters
+ * and the function is only called when it has previously been checked that the given input has 3 characters, the O(n) 'is' O(3),
+ * which is O(1) complexity. */
     void print() const; /*!< Prints the airline's ICAO code and name. */
     string getCode() const; /*!< Returns the airline's ICAO code. */
     string getName() const; /*!< Returns the airline's name. */

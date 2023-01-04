@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['city_0',['City',['../class_city.html',1,'City'],['../class_city.html#ab76161f52855d76d43892564e42f0f26',1,'City::City()']]]
+  ['bfs_0',['bfs',['../class_air_transport.html#a87f64867a5708ef74ca1747e313040c7',1,'AirTransport::bfs(Airport *source)'],['../class_air_transport.html#a1f220e61b947a4e165e00b279efaa03c',1,'AirTransport::bfs(Airport *source, const vector&lt; Airline * &gt; &amp;desiredAirlines)']]]
 ];

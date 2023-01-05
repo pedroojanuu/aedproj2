@@ -276,12 +276,19 @@ void Menu::statsMenu(AirTransport& airTransport) {
     string country;
     string airline;
     int diam;
+    string k;
     switch(option) {
         case 1:
             airTransport.globalStats();
             cout << "\nA calcular diametro do componente principal..." << endl;
             diam = airTransport.diameter();
             cout << "\nDiametro do componente principal: " << diam << endl;
+            cout << "\nInsira um numero para apresentar o top de aeroportos com mais voos e com mais companhias a partir deles" << endl;
+            getline(cin, k);
+            if (is_float(k) && stoi(k) >= 1) {
+                airTransport.topAirportsFlights(stoi(k));
+                airTransport.topAirportsAirlines(stoi(k));
+            } else cout << "Numero invalido" << endl;
             break;
         case 2:
             cout << "Insira o nome do pais:\n";

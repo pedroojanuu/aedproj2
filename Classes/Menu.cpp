@@ -283,7 +283,7 @@ void Menu::statsMenu(AirTransport& airTransport) {
             cout << "\nA calcular diametro do componente principal..." << endl;
             diam = airTransport.diameter();
             cout << "\nDiametro do componente principal: " << diam << endl;
-            cout << "\nInsira um numero para apresentar o top de aeroportos com mais voos e com mais companhias a partir deles" << endl;
+            cout << "\nInsira um numero para apresentar o top de aeroportos com mais partidas e com mais companhias a partir deles" << endl;
             getline(cin, k);
             if (is_float(k) && stoi(k) >= 1) {
                 airTransport.topAirportsFlights(stoi(k));

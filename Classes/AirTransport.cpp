@@ -350,7 +350,7 @@ void AirTransport::topAirportsFlights(unsigned int k) {
     sort(aux.begin(), aux.end(), [] (Airport* a1, Airport* a2) {
         return a1->getFlights().size() > a2->getFlights().size();
     });
-    cout << "Os " << k << " aeroportos com mais voos sao:" << endl << endl;
+    cout << "Os " << k << " aeroportos com mais partidas sao:" << endl << endl;
     for (size_t i = 0; i < k; i++) {
         aux[i]->print();
         cout << aux[i]->getFlights().size() << " voos.\n\n";
@@ -363,7 +363,7 @@ void AirTransport::topAirportsAirlines(unsigned int k) {
     sort(aux.begin(), aux.end(), [] (Airport* a1, Airport* a2) {
         return a1->getAirlines().size() > a2->getAirlines().size();
     });
-    cout << "Os " << k << " aeroportos com mais companhias com partidas deles sao: " << endl << endl;
+    cout << "Os " << k << " aeroportos com mais companhias a partir deles sao: " << endl << endl;
     for (size_t i = 0; i < k; i++) {
         aux[i]->print();
         cout << aux[i]->getAirlines().size() << " companhias.\n\n";

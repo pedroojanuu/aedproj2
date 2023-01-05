@@ -31,7 +31,8 @@ public:
  * Complexity: O(|V| + |E|). */
     int connectedComponents(); /*!< Returns the numbers of the air traffic network connected components (i.e., groups of airports
  * that are only reachable from within their group).\n Complexity: O(|V|²). */
-    list<Airport*> shortestPath (Airport* source, Airport* dest, const vector<Airline*>& desiredAirlines);
+    list<Airport*> shortestPath (Airport* source, Airport* dest, const vector<Airline*>& desiredAirlines); /*!< Returns a list of
+ * airports that one needs to take in order to go from source to dest, with the shortest number of trips.\n Complexity: O(|V| + |E| */
     vector<Airport*> getAirport(const string& code);
     City* getCity(const string &name, const string &country);
     list<list<Airport*>> getPaths(const vector<Airport*>& source, const vector<Airport*>& dest, const vector<Airline*>& desiredAirlines = vector<Airline*>());

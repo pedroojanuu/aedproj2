@@ -1,5 +1,20 @@
 var searchData=
 [
-  ['infomenu_0',['infoMenu',['../class_menu.html#acafda199c6bc2f1c5d7a992b4d6fdbec',1,'Menu']]],
-  ['isvisited_1',['isVisited',['../class_airport.html#ae0c8e702145d72ca69af5d51c7d8b7a4',1,'Airport']]]
+  ['getairline_0',['getAirline',['../class_air_transport.html#afcf510d87cdb09da2fbb8c9bd6a1dd1e',1,'AirTransport::getAirline()'],['../class_flight.html#acb5e3bf1f37855b09b98a15b58fda673',1,'Flight::getAirline()']]],
+  ['getairlines_1',['getAirlines',['../class_airport.html#a30d270e54c45ac1ba021073a6ab05bea',1,'Airport']]],
+  ['getairport_2',['getAirport',['../class_air_transport.html#aeb6946c352a0a7b96d0e6942cd87a1a3',1,'AirTransport']]],
+  ['getairports_3',['getAirports',['../class_city.html#a999913e1b207f4ac5af81f4bb3a0aa93',1,'City']]],
+  ['getairportsincity_4',['getAirportsInCity',['../class_air_transport.html#a8df7b4b45bb88e58d031bd7f38f5dce5',1,'AirTransport']]],
+  ['getairportsinrange_5',['getAirportsInRange',['../class_air_transport.html#a51edb2e87c39fea48a933067ab6a1c85',1,'AirTransport']]],
+  ['getcity_6',['getCity',['../class_airport.html#a5d84094b8fc9ec0a04193c34ea1f8817',1,'Airport::getCity()'],['../class_air_transport.html#ad9597f59869ff17b2e6d3da599bb23f6',1,'AirTransport::getCity()']]],
+  ['getcode_7',['getCode',['../class_airline.html#a41ef613d6b390c463821b9ae43d9ec84',1,'Airline']]],
+  ['getcountry_8',['getCountry',['../class_airline.html#a265c119d09effb03f8c7b3107f8d49dd',1,'Airline::getCountry()'],['../class_city.html#a29f48c92bdf5ea985324dd0e8bee2697',1,'City::getCountry()']]],
+  ['getdest_9',['getDest',['../class_flight.html#ad8734a5161240adad54dd6a52c81fe9b',1,'Flight']]],
+  ['getdistance_10',['getDistance',['../class_airport.html#a287483ba5baf9fb9a0ca6cd328e477cc',1,'Airport']]],
+  ['getflights_11',['getFlights',['../class_airport.html#a4c7308fbe111c994d1148e6394155df7',1,'Airport']]],
+  ['getlast_12',['getLast',['../class_airport.html#a12d365d6c2f37e81b42fb978abf0c65b',1,'Airport']]],
+  ['getlat_13',['getLat',['../class_airport.html#a68808ea46d6c48819e23989c64488ef9',1,'Airport']]],
+  ['getlon_14',['getLon',['../class_airport.html#abf4740e7f18c99dc2ca20bd848057019',1,'Airport']]],
+  ['getname_15',['getName',['../class_airline.html#a24f8b8e17d2d10af233b12671673bcd8',1,'Airline::getName()'],['../class_airport.html#a93efcd09328d24469d97a81e8048b776',1,'Airport::getName()']]],
+  ['getpaths_16',['getPaths',['../class_air_transport.html#a6437c76b2c841f2928d87d54128bd787',1,'AirTransport']]]
 ];

@@ -260,15 +260,15 @@ void AirTransport::flightsInRange(const vector<Airport*>& airport, int maxflight
 }
 
 int AirTransport::diameter() {
-    int maxS = maxSize();
+    int maxS = maxSize(); // O(V(V+E)
     int currmax = 0;
     for(auto airport : airports) {
         airport.second->setVisited(false);
         airport.second->setDistance(-1);
     }
     for(auto airport1 : airports) {
-        if(componentSize(airport1.second) != maxS) {
-            bfs(airport1.second);
+        if(componentSize(airport1.second) != maxS) {// O(V(V+E))
+            bfs(airport1.second); // O(V(V+E)²)
             for (auto airport2: airports) {
                 currmax = max(currmax, airport2.second->getDistance());
                 airport2.second->setDistance(-1);
@@ -328,10 +328,6 @@ void AirTransport::countryStats(const string& country) {
 }
 
 void AirTransport::airlineStats(Airline* airline) {
-    if(airline == nullptr) {
-        cout << "Companhia nao encontrada." << endl;
-        return;
-    }
     int flightsNo = 0;
     unordered_set<Airport*> airp;
     for (auto p : airports)
@@ -340,7 +336,7 @@ void AirTransport::airlineStats(Airline* airline) {
                 flightsNo++;
                 airp.insert(p.second);
             }
-    cout << "A companhia " << airline->getName() << " tem um total de " << flightsNo << " voos, desde um total de "
+    cout << "A companhia " << airline->getName() << " tem um total de " << flightsNo << " voos, partindo de um total de "
     << airp.size() << " aeroportos." << endl;
 }
 

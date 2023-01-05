@@ -235,7 +235,7 @@ void Menu::pathMenu(AirTransport& airTransport) {
     for(const auto& path : paths) {
         for(auto airport : path) airport->print();
         cout << endl;
-        if(!paths.begin()->empty()) cout << "Numero de voos: " << path.size()-1 << endl;
+        if(!paths.begin()->empty()) cout << "Numero de voos: " << path.size()-1 << endl << endl;
     }
 }
 
@@ -295,7 +295,8 @@ void Menu::statsMenu(AirTransport& airTransport) {
                 getline(cin,airline);
                 cout << endl;
                 if(airline.length() == 3 || airTransport.getAirline(airline) != nullptr) break;
-                cout << "Codigo invalido. Por favor, insira novamente.\n";
+                if(airline.length() != 3) cout << "Codigo invalido. Por favor, insira novamente.\n";
+                else cout << "Companhia nao encontrada. Por favor, insira novamente.\n";
             }
             airTransport.airlineStats(airTransport.getAirline(airline));
         case 4:

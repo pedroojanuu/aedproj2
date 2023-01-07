@@ -16,5 +16,6 @@ var searchData=
   ['getlat_13',['getLat',['../class_airport.html#a68808ea46d6c48819e23989c64488ef9',1,'Airport']]],
   ['getlon_14',['getLon',['../class_airport.html#abf4740e7f18c99dc2ca20bd848057019',1,'Airport']]],
   ['getname_15',['getName',['../class_airline.html#a24f8b8e17d2d10af233b12671673bcd8',1,'Airline::getName()'],['../class_airport.html#a93efcd09328d24469d97a81e8048b776',1,'Airport::getName()']]],
-  ['getpaths_16',['getPaths',['../class_air_transport.html#a6437c76b2c841f2928d87d54128bd787',1,'AirTransport']]]
+  ['getpaths_16',['getPaths',['../class_air_transport.html#a6437c76b2c841f2928d87d54128bd787',1,'AirTransport']]],
+  ['globalstats_17',['globalStats',['../class_air_transport.html#ac0e6810dfdf5113d7c4b9c878ba6f7ef',1,'AirTransport']]]
 ];

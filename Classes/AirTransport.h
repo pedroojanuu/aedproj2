@@ -61,7 +61,7 @@ public:
     void countryStats(const string& country); /*!< Given a country, prints on terminal the number of airports, airlines and flights leaving that country.
  * \n Complexity: O(|V|+|A|), where |V| is the number of airports and |A| is the number of airlines. */
     void airlineStats(Airline* airline); /*!< Given an airline, prints on terminal the number of flights of that airline, as well as the number of airports
- * it departs from. \n Complexity: O(|E|). */
+ * it departs from. \n Complexity: O(|V|+|E|). */
     void topAirportsFlights(unsigned k); /*!< Given a number k, prints on terminal the top k airports, sorted by number of flights. \n Complexity: O(|V|log(|V|)). */
     void topAirportsAirlines(unsigned k);  /*!< Given a number k, prints on terminal the top k airports, sorted by number of airlines. \n Complexity: O(|V|log(|E|)). */
 private:

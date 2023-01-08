@@ -18,7 +18,7 @@ class City {
 public:
     City(const string& name, const string& country); /*!< A constructor that receives a city name and a country name. */
     static size_t hash(string name, const string& country); /*!< Hash function that returns an integer based on a given city name
- * and country name.\n Complexity: O(n), with\a n being the length of the city name concatenated with the country name. */
+ * and country name.\n Complexity: O(n), with \a n being the length of the city name concatenated with the country name. */
     void addAirport(Airport* airport); /*!< Adds a pointer to an Airport to the vector of the city's airports. */
     vector<Airport*> getAirports() const; /*!< Returns a vector of pointers to the city's airports. */
     void print() const; /*!< Prints the city's name and it country's name. */
